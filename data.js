@@ -50,18 +50,100 @@ const carData =[
         `
     },
     {
-        id: "001",
-        name: "スズキ スペーシアカスタムＸＳリミテッド",
-        catchphrase: "プレミアムメンテナンス込み！特別仕様のカッコイイ1台",
+        id: "spacia_x",
+        name: "スズキ スペーシア Ｘ ハイブリッド",
+        catchphrase: "お買い得車！汚れが全然目立たないミントちゃん✨",
         price: "36.8",
-        status: "売約済",
+        status: "販売中",
         mainImage: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=800&q=80",
         specs:[
-            { title: "年式　走行距離", text: "平成27年 (2015年)　5.5万km" },
-            { title: "装備", text: "両側パワースライドドア / 15インチアルミ" }
+            { title: "カラー", text: "フレンチミントパールメタリック" },
+            { title: "装備", text: "上位グレードＸ / 新品タイヤ / 新品足周りブーツ" }
         ],
         freeText: `
-            <p>限定車です。ボディ鉄粉除去、エンジン燃焼室洗浄など、当社のプレミアムメンテナンスを全実施済み。</p>
+            <h3>プレミアムメンテナンス込みの１台</h3>
+            <p>汚れが全然目立たないペールトーンのミントちゃん✨</p>
+            <p>上位グレードＸ 燃費抜群ハイブリッド 新品タイヤ 新品足周りブーツ（メルセデス用グリス打ち換え） 新品撥水ワイパー ほぼ新品純正バッテリー</p>
+            <p>新車価格 約１７０万円のところ、車検２年付きお渡しでお得です。</p>
+        `
+    },
+    {
+        id: "hustler_x",
+        name: "スズキ ハスラーＨＹＢＲＩＤ Ｘ",
+        catchphrase: "全方位モニター付メモリーナビ アクティブイエロー２トーン",
+        price: "91.8",
+        status: "販売中",
+        mainImage: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=800&q=80",
+        specs:[
+            { title: "年式", text: "2020年モデル" },
+            { title: "車検", text: "令和９年１０月９日まで" }
+        ],
+        freeText: `
+            <p>車検付き即日納車OK（佐賀、佐世保）</p>
+            <p>ハイブリッド 純正ナビ 全方位モニター シートヒーター デュアルカメラブレーキサポート 後方 ブレーキサポート 純正１５インチアルミホイール プレミアムメンテナンス実施 プッシュスタート</p>
+        `
+    },
+    {
+        id: "nbox_custom",
+        name: "ホンダ N-BOXカスタム G・EXターボ",
+        catchphrase: "ホンダセンシング プラチナホワイト・パール",
+        price: "91.8",
+        status: "販売中",
+        mainImage: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
+        specs:[
+            { title: "年式", text: "2019年モデル ターボ" },
+            { title: "装備", text: "ホンダセンシング / 両側パワースライドドア" }
+        ],
+        freeText: `
+            <p>スーパースライドシート 両側パワースライドドア 純正１５インチアルミホイール LEDヘッドライト オートライト バックカメラ ビルトインETC</p>
+            <p>プレミアムメンテナンス実施 安全＆快適装備ホンダセンシング付 アダプティブクルーズコントロール</p>
+        `
+    },
+    {
+        id: "minicab_m",
+        name: "三菱 ミニキャブトラック Ｍ",
+        catchphrase: "シルキーシルバーメタリック ５速ＭＴ ２ＷＤ",
+        price: "51.8",
+        status: "売約済",
+        mainImage: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80",
+        specs:[
+            { title: "年式", text: "2021年モデル" },
+            { title: "装備", text: "パワーステアリング / ５速マニュアル / エアコン" }
+        ],
+        freeText: `
+            <p>車検２年付きお渡し Ｗエアバッグ ABS マニュアルエアコン</p>
+        `
+    },
+    {
+        id: "benz_c200",
+        name: "メルセデスベンツＣクラス C200",
+        catchphrase: "アバンギャルド オブシディアンブラック",
+        price: "164.8",
+        status: "販売中",
+        mainImage: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80",
+        specs:[
+            { title: "年式", text: "2015年モデル" },
+            { title: "装備", text: "レーダークルーズコントロール / 純正LEDヘッドライト" }
+        ],
+        freeText: `
+            <p>車検あり即ご納車OK ディーラーメンテ車 人気No1カラー プレミアムメンテナンス実施</p>
+            <p>フル安全装備 ナビ バックカメラ シートヒーター プッシュスタート レーダークルーズコントロール オートライト オートハイビーム</p>
+        `
+    },
+    {
+        id: "mini_one",
+        name: "BMW Mini ONE",
+        catchphrase: "ブレイジングレッド＆ホワイト２トーン",
+        price: "82.8",
+        status: "売約済",
+        mainImage: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80",
+        specs:[
+            { title: "年式", text: "2017年モデル ワンオーナー" },
+            { title: "車検", text: "令和８年７月まで" }
+        ],
+        freeText: `
+            <p>即納車OK！ ディーラーメンテ車 超極上コンディション</p>
+            <p>ナビパッケージ タイヤ、ブレーキなど消耗品まで良好 コスパ最強の１台</p>
         `
     }
 ];

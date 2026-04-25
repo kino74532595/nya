@@ -1,0 +1,91 @@
+/* style.css */
+/* 優しい丸ゴシックフォントを読み込み */
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;600;800&display=swap');
+
+:root {
+    --primary-color: #279A92; /* エメラルドグリーン（安心・清潔感） */
+    --accent-color: #FF8C6B; /* コーラルオレンジ（温かみ・親しみ） */
+    --bg-color: #FFFDF9; /* クリーム系の優しい白 */
+    --text-color: #4A4A4A; /* 真っ黒ではない、少し柔らかい黒 */
+    --card-bg: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'M PLUS Rounded 1c', sans-serif; }
+body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.8; }
+a { text-decoration: none; color: inherit; }
+
+/* ▼ ヘッダー ▼ */
+header { background-color: #fff; padding: 1.5rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: relative; }
+header::before {
+    content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+.header-container { width: 90%; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.logo { text-align: center; margin-bottom: 1.5rem; }
+.logo h1 { color: var(--primary-color); font-size: 2.2rem; font-weight: 800; position: relative; display: inline-block; }
+.logo h1::after { content: "🐾"; position: absolute; right: -30px; top: -10px; font-size: 1.5rem; color: var(--accent-color); }
+.logo p { color: var(--accent-color); font-size: 1.1rem; margin-top: 0.5rem; font-weight: 600; }
+
+.nav-list { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; gap: 0.8rem; }
+.nav-link {
+    color: var(--text-color); font-weight: 600; font-size: 1rem; padding: 0.8rem 1.5rem;
+    border-radius: 50px; display: block; background-color: #fff; border: 2px solid #f0f0f0; transition: all 0.3s ease;
+}
+.nav-link:hover, .nav-link.current { border-color: var(--primary-color); color: var(--primary-color); transform: translateY(-3px); box-shadow: 0 6px 15px rgba(39, 154, 146, 0.15); }
+
+/* ▼ 汎用コンテンツ枠 ▼ */
+.content-wrapper { width: 90%; max-width: 1000px; margin: 40px auto; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
+.content-wrapper h2 { color: var(--primary-color); margin-bottom: 25px; border-bottom: 2px dashed #e0e0e0; padding-bottom: 10px; font-size: 1.5rem;}
+.content-wrapper p { margin-bottom: 15px; }
+
+/* ▼ 在庫車一覧（やわらかいカードデザイン） ▼ */
+.dark-section { padding: 60px 20px; } /* 名前はdark-sectionですが白背景にしています */
+.dark-container { max-width: 1000px; margin: 0 auto; }
+.section-title { text-align: center; font-size: 28px; color: var(--primary-color); margin-bottom: 40px; font-weight: 800; }
+
+.car-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+.car-card { background-color: var(--card-bg); border-radius: 16px; overflow: hidden; transition: 0.3s; box-shadow: 0 6px 16px rgba(0,0,0,0.06); border: 1px solid #f5f5f5; display: block; }
+.car-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.card-img-wrapper { position: relative; height: 220px; }
+.card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.status-badge { position: absolute; top: 15px; left: 15px; padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: bold; color: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+.badge-sale { background-color: var(--accent-color); } /* オレンジ */
+.badge-negotiation { background-color: #F4C430; } /* イエロー */
+.badge-sold { background-color: #999; } /* グレー */
+.card-info { padding: 25px; text-align: center; }
+.car-name { font-size: 18px; margin-bottom: 10px; color: var(--text-color); font-weight: 800;}
+.car-price { font-size: 14px; color: #666; margin-bottom: 0; }
+.car-price span { font-size: 28px; color: var(--accent-color); font-weight: 800; margin: 0 5px; }
+
+/* ▼ 詳細ページ ▼ */
+.back-btn { display: inline-block; background: #fff; border: 2px solid #eee; color: var(--text-color); padding: 10px 25px; border-radius: 50px; margin-bottom: 30px; font-weight: bold; transition: 0.2s; }
+.back-btn:hover { border-color: var(--primary-color); color: var(--primary-color); }
+
+.detail-header { text-align: center; margin-bottom: 30px; }
+.detail-catch { color: var(--accent-color); font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+.detail-title { font-size: 32px; color: var(--primary-color); margin-bottom: 20px; }
+.detail-price { font-size: 20px; color: #666; background: #fff; display: inline-block; padding: 10px 30px; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);}
+.detail-price span { font-size: 40px; font-weight: 800; color: var(--accent-color); margin: 0 10px; }
+
+.detail-main-img { margin-bottom: 40px; }
+.detail-main-img img { width: 100%; max-height: 500px; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+
+/* ▼ お客様の既存HTMLタグ（クラス）を綺麗に表示する設定 ▼ */
+/* 画像の横並び（figure.c） */
+.c { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
+.c img { max-width: 48%; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+@media (max-width: 600px) { .c img { max-width: 100%; } }
+.mb30 { margin-bottom: 30px; }
+
+/* スペック表（table.ta1） */
+.ta1 { width: 100%; border-collapse: collapse; margin-bottom: 40px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 16px rgba(0,0,0,0.05); }
+.ta1 caption { font-weight: bold; color: var(--primary-color); font-size: 1.2rem; margin-bottom: 10px; text-align: left; }
+.ta1 th, .ta1 td { padding: 20px; border-bottom: 1px solid #f0f0f0; text-align: left; }
+.ta1 th { background-color: rgba(39, 154, 146, 0.05); color: var(--primary-color); width: 30%; font-weight: bold; }
+.ta1 tr:last-child th, .ta1 tr:last-child td { border-bottom: none; }
+
+/* 自由記述エリアの見出しなど */
+.free-text-area { background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 6px 16px rgba(0,0,0,0.04); margin-bottom: 40px;}
+.free-text-area h2, .free-text-area h3 { color: var(--primary-color); margin-top: 30px; margin-bottom: 15px; border-left: 5px solid var(--accent-color); padding-left: 15px; }
+.free-text-area p { margin-bottom: 20px; }
+.free-text-area b, .free-text-area strong { color: var(--accent-color); }

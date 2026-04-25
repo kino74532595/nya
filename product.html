@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在庫車一覧 | にゃんこ自動車</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1><a href="index.html">にゃんこ自動車</a></h1>
+                <p>かわいい車屋さん</p>
+            </div>
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">会社概要</a></li>
+                    <li class="nav-item"><a href="product.html" class="nav-link current">在庫車一覧</a></li>
+                    <li class="nav-item"><a href="https://form1ssl.fc2.com/form/?id=11d19b7e0369ef1b" target="_blank" class="nav-link">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 在庫車一覧（黒背景） -->
+    <section class="dark-section">
+        <div class="dark-container">
+            <h2 class="section-title">STOCK CARS</h2>
+            <!-- JSがここに一覧を自動生成します -->
+            <div class="car-grid" id="car-list-container"></div>
+        </div>
+    </section>
+
+    <!-- 必須のスクリプト -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

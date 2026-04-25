@@ -3,19 +3,28 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;600;800&display=swap');
 
 :root {
-    --primary-color: #279A92; /* エメラルドグリーン（安心・清潔感） */
-    --accent-color: #FF8C6B; /* コーラルオレンジ（温かみ・親しみ） */
-    --bg-color: #FFFDF9; /* クリーム系の優しい白 */
-    --text-color: #4A4A4A; /* 真っ黒ではない、少し柔らかい黒 */
+    --primary-color: #ffbbbb; /* ふんわりとしたピンク */
+    --accent-color: #ffccbb;  /* 優しいオレンジ */
+    --bg-color: #FFFCFA;      /* 極めて薄いクリームホワイト */
+    --text-color: #7A6863;    /* 濃すぎない、ココアのような優しいブラウン */
     --card-bg: #FFFFFF;
+    --price-color: #FF8C6B; /* ★追加：価格用の目立つオレンジ */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'M PLUS Rounded 1c', sans-serif; }
-body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.8; }
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-color); 
+    line-height: 1.8; 
+    /* 背景にしっぽが揺れるような柔らかい曲線を配置（色をさらに淡く調整） */
+    background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-200,200 C300,600 600,-100 1200,300 C1800,700 2200,100 2600,400' stroke='%23FFF4F4' stroke-width='40' fill='none' stroke-linecap='round'/%3E%3Cpath d='M-100,800 C400,400 800,1100 1400,600 C2000,100 2400,900 2800,500' stroke='%23FFF9F4' stroke-width='30' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
+}
 a { text-decoration: none; color: inherit; }
 
 /* ▼ ヘッダー ▼ */
-header { background-color: #fff; padding: 1.5rem 0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: relative; }
+header { background-color: rgba(255, 255, 255, 0.95); padding: 1.5rem 0; position: relative; }
 header::before {
     content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 5px;
     background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
@@ -23,69 +32,129 @@ header::before {
 .header-container { width: 90%; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
 .logo { text-align: center; margin-bottom: 1.5rem; }
 .logo h1 { color: var(--primary-color); font-size: 2.2rem; font-weight: 800; position: relative; display: inline-block; }
-.logo h1::after { content: "🐾"; position: absolute; right: -30px; top: -10px; font-size: 1.5rem; color: var(--accent-color); }
+.logo h1::after { content: "🐾"; position: absolute; right: -35px; top: -10px; font-size: 1.6rem; color: var(--accent-color); transform: rotate(15deg); }
 .logo p { color: var(--accent-color); font-size: 1.1rem; margin-top: 0.5rem; font-weight: 600; }
 
 .nav-list { display: flex; justify-content: center; list-style: none; flex-wrap: wrap; gap: 0.8rem; }
 .nav-link {
     color: var(--text-color); font-weight: 600; font-size: 1rem; padding: 0.8rem 1.5rem;
-    border-radius: 50px; display: block; background-color: #fff; border: 2px solid #f0f0f0; transition: all 0.3s ease;
+    border-radius: 50px; display: block; background-color: rgba(255,255,255,0.8); border: 2px solid transparent; transition: all 0.3s ease;
+    position: relative;
 }
-.nav-link:hover, .nav-link.current { border-color: var(--primary-color); color: var(--primary-color); transform: translateY(-3px); box-shadow: 0 6px 15px rgba(39, 154, 146, 0.15); }
+/* 肉球はホバーではなく「現在のページ」にのみ常時表示させる */
+.nav-link::before {
+    content: "🐾"; position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+    color: var(--primary-color); font-size: 1.2rem; opacity: 0; transition: opacity 0.3s ease;
+}
+.nav-link.current::before { opacity: 1; }
+.nav-link:hover, .nav-link.current { 
+    border-color: var(--primary-color); color: var(--text-color); 
+    transform: translateY(-3px); box-shadow: 0 6px 15px rgba(255, 187, 187, 0.4); 
+}
 
-/* ▼ 汎用コンテンツ枠 ▼ */
-.content-wrapper { width: 90%; max-width: 1000px; margin: 40px auto; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); }
-.content-wrapper h2 { color: var(--primary-color); margin-bottom: 25px; border-bottom: 2px dashed #e0e0e0; padding-bottom: 10px; font-size: 1.5rem;}
+/* ▼ 汎用コンテンツ枠（頭に猫耳つき） ▼ */
+.content-wrapper { 
+    position: relative; width: 90%; max-width: 1000px; margin: 60px auto; 
+    background: #fff; padding: 50px; border-radius: 30px; 
+    filter: drop-shadow(0 8px 24px rgba(122, 104, 99, 0.08)); 
+}
+.content-wrapper::before, .content-wrapper::after {
+    content: ""; position: absolute; top: -15px; width: 35px; height: 35px;
+    background: #fff; border-radius: 5px 20px 5px 20px;
+    transform: rotate(-45deg); z-index: -1;
+}
+.content-wrapper::before { left: 60px; }
+.content-wrapper::after { right: 60px; }
+
+/* ▼ 見出し（本物のしっぽ風の下線） ▼ */
+.content-wrapper h2, .free-text-area h2, .free-text-area h3 { 
+    color: var(--text-color); margin-bottom: 30px; font-size: 1.6rem; 
+    position: relative; display: inline-block; padding-bottom: 15px; border: none;
+}
+/* しっぽの直線部分 */
+.content-wrapper h2::before, .free-text-area h2::before, .free-text-area h3::before {
+    content: ""; position: absolute; bottom: 5px; left: 0; width: calc(100% - 15px); height: 4px;
+    background: var(--accent-color); border-radius: 4px;
+}
+/* しっぽの右端のくるんと丸まった部分（SVG） */
+.content-wrapper h2::after, .free-text-area h2::after, .free-text-area h3::after {
+    content: ""; position: absolute; bottom: -3px; right: -15px; width: 35px; height: 25px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 20'%3E%3Cpath d='M -5,15 L 10,15 C 25,15 25,5 15,5 C 5,5 5,12 15,12' stroke='%23ffccbb' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-size: contain; background-repeat: no-repeat;
+}
+
 .content-wrapper p { margin-bottom: 15px; }
 
-/* ▼ 在庫車一覧（やわらかいカードデザイン） ▼ */
-.dark-section { padding: 60px 20px; } /* 名前はdark-sectionですが白背景にしています */
+/* ▼ 在庫車一覧 ▼ */
+.dark-section { padding: 60px 20px; }
 .dark-container { max-width: 1000px; margin: 0 auto; }
-.section-title { text-align: center; font-size: 28px; color: var(--primary-color); margin-bottom: 40px; font-weight: 800; }
+.section-title { text-align: center; font-size: 28px; color: var(--text-color); margin-bottom: 50px; font-weight: 800; }
 
-.car-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-.car-card { background-color: var(--card-bg); border-radius: 16px; overflow: hidden; transition: 0.3s; box-shadow: 0 6px 16px rgba(0,0,0,0.06); border: 1px solid #f5f5f5; display: block; }
-.car-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.car-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 35px; }
+
+/* カード（冗長だった猫耳を削除しスッキリと） */
+.car-card { 
+    position: relative; background-color: var(--card-bg); border-radius: 24px; 
+    transition: 0.3s; border: 2px solid #FFF6F5; display: block; 
+    filter: drop-shadow(0 6px 16px rgba(122, 104, 99, 0.05));
+}
+.car-card:hover { transform: translateY(-8px); filter: drop-shadow(0 15px 30px rgba(122, 104, 99, 0.12)); border-color: var(--primary-color); }
+
 .card-img-wrapper { position: relative; height: 220px; }
-.card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-.status-badge { position: absolute; top: 15px; left: 15px; padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: bold; color: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-.badge-sale { background-color: var(--accent-color); } /* オレンジ */
-.badge-negotiation { background-color: #F4C430; } /* イエロー */
-.badge-sold { background-color: #999; } /* グレー */
+.card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 22px 22px 0 0; }
+.status-badge { 
+    position: absolute; top: 15px; left: 15px; padding: 6px 14px; 
+    border-radius: 20px 20px 20px 5px; 
+    font-size: 13px; font-weight: bold; color: var(--text-color); box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+.badge-sale { background-color: var(--accent-color); }
+.badge-negotiation { background-color: var(--primary-color); }
+.badge-sold { background-color: #E8DDDB; }
 .card-info { padding: 25px; text-align: center; }
 .car-name { font-size: 18px; margin-bottom: 10px; color: var(--text-color); font-weight: 800;}
-.car-price { font-size: 14px; color: #666; margin-bottom: 0; }
-.car-price span { font-size: 28px; color: var(--accent-color); font-weight: 800; margin: 0 5px; }
+.car-price { font-size: 15px; color: var(--text-color); margin-bottom: 0; font-weight: bold; }
+.car-price span { font-size: 28px; color: var(--price-color); font-weight: 800; margin: 0 5px; }
 
 /* ▼ 詳細ページ ▼ */
-.back-btn { display: inline-block; background: #fff; border: 2px solid #eee; color: var(--text-color); padding: 10px 25px; border-radius: 50px; margin-bottom: 30px; font-weight: bold; transition: 0.2s; }
-.back-btn:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.back-btn { 
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; border: 2px solid #FFF0F0; color: var(--text-color); 
+    padding: 10px 25px; border-radius: 25px 25px 5px 25px; 
+    margin-bottom: 30px; font-weight: bold; transition: 0.2s; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.05));
+}
+.back-btn:hover { border-color: var(--primary-color); transform: translateX(-5px); }
 
 .detail-header { text-align: center; margin-bottom: 30px; }
-.detail-catch { color: var(--accent-color); font-size: 18px; font-weight: bold; margin-bottom: 10px; }
-.detail-title { font-size: 32px; color: var(--primary-color); margin-bottom: 20px; }
-.detail-price { font-size: 20px; color: #666; background: #fff; display: inline-block; padding: 10px 30px; border-radius: 50px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);}
-.detail-price span { font-size: 40px; font-weight: 800; color: var(--accent-color); margin: 0 10px; }
+.detail-catch { color: var(--text-color); font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+.detail-title { font-size: 30px; color: var(--text-color); margin-bottom: 20px; font-weight: 800; }
+.detail-price { font-size: 20px; color: var(--text-color); background: #fff; display: inline-block; padding: 12px 35px; border-radius: 50px; box-shadow: 0 6px 15px rgba(122, 104, 99, 0.08); font-weight: bold;}
+.detail-price span { font-size: 40px; font-weight: 800; color: var(--price-color); margin: 0 10px; }
 
-.detail-main-img { margin-bottom: 40px; }
-.detail-main-img img { width: 100%; max-height: 500px; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.detail-main-img { margin-bottom: 40px; position: relative; }
+.detail-main-img::before, .detail-main-img::after {
+    content: ""; position: absolute; top: -15px; width: 40px; height: 40px;
+    background: #fff; border-radius: 8px 25px 8px 25px; transform: rotate(-45deg); z-index: -1;
+}
+.detail-main-img::before { left: 40px; }
+.detail-main-img::after { right: 40px; }
+.detail-main-img img { width: 100%; max-height: 500px; object-fit: cover; border-radius: 30px; box-shadow: 0 8px 24px rgba(122, 104, 99, 0.1); border: 6px solid #fff; }
 
-/* ▼ お客様の既存HTMLタグ（クラス）を綺麗に表示する設定 ▼ */
-/* 画像の横並び（figure.c） */
+/* ▼ 画像・スペック表・自由記述エリア ▼ */
 .c { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
-.c img { max-width: 48%; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.c img { max-width: 48%; object-fit: cover; border-radius: 20px; box-shadow: 0 6px 16px rgba(122, 104, 99, 0.08); border: 4px solid #fff; }
 @media (max-width: 600px) { .c img { max-width: 100%; } }
 .mb30 { margin-bottom: 30px; }
 
-/* スペック表（table.ta1） */
-.ta1 { width: 100%; border-collapse: collapse; margin-bottom: 40px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 16px rgba(0,0,0,0.05); }
-.ta1 caption { font-weight: bold; color: var(--primary-color); font-size: 1.2rem; margin-bottom: 10px; text-align: left; }
-.ta1 th, .ta1 td { padding: 20px; border-bottom: 1px solid #f0f0f0; text-align: left; }
-.ta1 th { background-color: rgba(39, 154, 146, 0.05); color: var(--primary-color); width: 30%; font-weight: bold; }
+.ta1 { width: 100%; border-collapse: collapse; margin-bottom: 40px; background: #fff; border-radius: 24px; overflow: hidden; box-shadow: 0 6px 16px rgba(122, 104, 99, 0.05); }
+.ta1 caption { font-weight: bold; color: var(--text-color); font-size: 1.2rem; margin-bottom: 10px; text-align: left; }
+.ta1 th, .ta1 td { padding: 20px; border-bottom: 2px dashed #FFF0F0; text-align: left; }
+.ta1 th { background-color: #FFF9F9; color: var(--text-color); width: 30%; font-weight: bold; }
 .ta1 tr:last-child th, .ta1 tr:last-child td { border-bottom: none; }
 
-/* 自由記述エリアの見出しなど */
-.free-text-area { background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 6px 16px rgba(0,0,0,0.04); margin-bottom: 40px;}
-.free-text-area h2, .free-text-area h3 { color: var(--primary-color); margin-top: 30px; margin-bottom: 15px; border-left: 5px solid var(--accent-color); padding-left: 15px; }
+.free-text-area { background: #fff; padding: 50px; border-radius: 30px; box-shadow: 0 6px 16px rgba(122, 104, 99, 0.05); margin-bottom: 40px; position: relative;}
+.free-text-area::before {
+    content: ""; position: absolute; top: -15px; right: 60px; width: 35px; height: 35px;
+    background: #fff; border-radius: 5px 20px 5px 20px; transform: rotate(-45deg); z-index: -1;
+}
 .free-text-area p { margin-bottom: 20px; }
-.free-text-area b, .free-text-area strong { color: var(--accent-color); }
+.free-text-area b, .free-text-area strong { color: var(--text-color); background: linear-gradient(transparent 60%, #FFF0F0 60%); padding: 0 5px;}

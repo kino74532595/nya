@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>車両詳細 | にゃんこ自動車</title>
+    <title>販売実績 | にゃんこ自動車</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,27 +13,27 @@
                 <h1><a href="index.html">にゃんこ自動車</a></h1>
                 <p>かわいい車屋さん</p>
             </div>
+            <!-- メニューは元の4つのまま -->
             <nav>
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="about.html" class="nav-link">会社概要</a></li>
-                    <li class="nav-item"><a href="product.html" class="nav-link current">在庫車一覧</a></li>
+                    <li class="nav-item"><a href="product.html" class="nav-link">在庫車一覧</a></li>
                     <li class="nav-item"><a href="https://form1ssl.fc2.com/form/?id=11d19b7e0369ef1b" target="_blank" class="nav-link">お問い合わせ</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- 車両詳細（黒背景） -->
     <section class="dark-section">
-        <div class="dark-container" style="max-width: 800px;">
+        <div class="dark-container">
             <a href="product.html" class="back-btn">🐾 在庫車一覧に戻る</a>
-            <!-- JSがここに詳細を自動生成します -->
-            <div id="car-detail-container"></div>
+            
+            <h2 class="section-title" style="margin-top: 20px;">🐾 これまでにお届けした車たち（販売実績）</h2>
+            <div class="car-grid" id="sold-car-list-container"></div>
         </div>
     </section>
 
-    <!-- 必須のスクリプト -->
     <script src="data.js"></script>
     <script src="app.js"></script>
 </body>
